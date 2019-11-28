@@ -3,7 +3,7 @@ package cn.appinfo.entity;
 import java.util.Date;
 
 public class Ad_Promotion {
-	private Integer id;
+	private Integer id;					//Ö÷¼ü
 	private Integer appId;
 	private String adPicPath;
 	private Integer adPV;
