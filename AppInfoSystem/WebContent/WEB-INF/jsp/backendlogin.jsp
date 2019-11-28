@@ -32,7 +32,7 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form action="dologin" method="post">
+            <form action="${pageContext.request.contextPath }/backend/dologin.do" method="post">
               <h1>后台管理系统</h1>
               <div>
                 <input type="text" class="form-control" name="userCode" placeholder="请输入用户名" required="" />

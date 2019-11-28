@@ -58,7 +58,7 @@
 	</mvc:annotation-driven>
 	<!-- 开启组件扫描 -->
 	<context:component-scan
-		base-package="cn.appinfo" />
+		base-package="cn.seventeen.appinfo" />
 	<!-- 视图解析器 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -73,13 +73,16 @@
 		<property name="defaultEncoding" value="UTF-8" />
 	</bean>
 	<!-- 配置拦截器 -->
-	<!-- <mvc:interceptors>
+	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="**" />
-			<mvc:exclude-mapping path="page/login.do" />
-			<mvc:exclude-mapping path="index.jsp" />
-			<bean class="cn.appinfo.interceptor.Intercaptor" />
+			<mvc:mapping path="/dev/**"/>
+			<mvc:mapping path="/backend/**"/>
+			<mvc:exclude-mapping path="/dev/gologin.do"/>
+			<mvc:exclude-mapping path="/dev/dologin.do"/>
+			<mvc:exclude-mapping path="/backend/gologin.do"/>
+			<mvc:exclude-mapping path="/backend/dologin.do"/>
+			<bean class="cn.seventeen.appinfo.interceptor.Interceptor" />
 		</mvc:interceptor>
-	</mvc:interceptors> -->
+	</mvc:interceptors>
 	<import resource="applicationContext.xml" />
 </beans>

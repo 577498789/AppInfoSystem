@@ -1,15 +1,15 @@
-package cn.appinfo.entity;
+package cn.seventeen.appinfo.entity;
 
 import java.io.Serializable;
 import java.util.Date;
 
-public class Der_User implements Serializable{
+public class DevUser implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private Integer id;			//id
-	private String decCode;		//开发者账号
+	private String devCode;		//开发者账号
 	private String devName;		//开发者名称
 	private String devPassword;	//开发者密码
 	private String devEmail;	//开发者电子邮箱
@@ -24,11 +24,11 @@ public class Der_User implements Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getDecCode() {
-		return decCode;
+	public String getDevCode() {
+		return devCode;
 	}
-	public void setDecCode(String decCode) {
-		this.decCode = decCode;
+	public void setDevCode(String devCode) {
+		this.devCode = devCode;
 	}
 	public String getDevName() {
 		return devName;
@@ -78,17 +78,20 @@ public class Der_User implements Serializable{
 	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
 	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	@Override
 	public String toString() {
-		return "Der_User [id=" + id + ", decCode=" + decCode + ", devName=" + devName + ", devPassword=" + devPassword
+		return "DevUser [id=" + id + ", devCode=" + devCode + ", devName=" + devName + ", devPassword=" + devPassword
 				+ ", devEmail=" + devEmail + ", devInfo=" + devInfo + ", createBy=" + createBy + ", creationDate="
 				+ creationDate + ", modifyBy=" + modifyBy + ", modifyDate=" + modifyDate + "]";
 	}
-	public Der_User(Integer id, String decCode, String devName, String devPassword, String devEmail, String devInfo,
+	public DevUser(Integer id, String devCode, String devName, String devPassword, String devEmail, String devInfo,
 			Integer createBy, Date creationDate, Integer modifyBy, Date modifyDate) {
 		super();
 		this.id = id;
-		this.decCode = decCode;
+		this.devCode = devCode;
 		this.devName = devName;
 		this.devPassword = devPassword;
 		this.devEmail = devEmail;
@@ -98,9 +101,9 @@ public class Der_User implements Serializable{
 		this.modifyBy = modifyBy;
 		this.modifyDate = modifyDate;
 	}
-	public Der_User() {
+	public DevUser() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 }

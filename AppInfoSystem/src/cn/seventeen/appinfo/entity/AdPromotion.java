@@ -1,19 +1,19 @@
-package cn.appinfo.entity;
+package cn.seventeen.appinfo.entity;
 
 import java.util.Date;
 
-public class Ad_Promotion {
+public class AdPromotion {
 	private Integer id;					//主键
-	private Integer appId;
-	private String adPicPath;
-	private Integer adPV;
-	private Integer carouselPosition;
-	private Date startTime;
-	private Date endTime;
-	private Integer createBy;
-	private Date creationDate;
-	private Integer modifyBy;
-	private Date modifyDate;
+	private Integer appId;				//appId
+	private String adPicPath;			//广告图片路径
+	private Integer adPV;				//广告点击量
+	private Integer carouselPosition;	//轮播位
+	private Date startTime;				//起效时间
+	private Date endTime;				//失效时间
+	private Integer createBy;			//创建者
+	private Date creationDate;			//创建时间
+	private Integer modifyBy;			//更新者
+	private Date modifyDate;			//更新时间
 	public Integer getId() {
 		return id;
 	}
@@ -87,11 +87,11 @@ public class Ad_Promotion {
 				+ ", createBy=" + createBy + ", creationDate=" + creationDate + ", modifyBy=" + modifyBy
 				+ ", modifyDate=" + modifyDate + "]";
 	}
-	public Ad_Promotion() {
+	public AdPromotion() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Ad_Promotion(Integer id, Integer appId, String adPicPath, Integer adPV, Integer carouselPosition,
+	public AdPromotion(Integer id, Integer appId, String adPicPath, Integer adPV, Integer carouselPosition,
 			Date startTime, Date endTime, Integer createBy, Date creationDate, Integer modifyBy, Date modifyDate) {
 		super();
 		this.id = id;

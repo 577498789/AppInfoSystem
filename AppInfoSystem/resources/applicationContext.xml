@@ -33,20 +33,6 @@
 		<property name="url" value="${url}" />
 		<property name="username" value="${user}" />
 		<property name="password" value="${password}" />
-		<property name="initialSize" value="${initialSize}" />
-		<property name="maxActive" value="${maxActive}" />
-		<property name="maxIdle" value="${maxIdle}" />
-		<property name="minIdle" value="${minIdle}" />
-		<property name="maxWait" value="${maxWait}" />
-		<property name="removeAbandoned" value="${removeAbandoned}" />
-		<property name="removeAbandonedTimeout"
-			value="${removeAbandonedTimeout}" />
-		<property name="testWhileIdle" value="true" />
-		<property name="timeBetweenEvictionRunsMillis" value="60000" />
-		<property name="testOnBorrow" value="false" />
-		<property name="testOnReturn" value="false" />
-		<property name="validationQuery" value="select 1" />
-		<property name="numTestsPerEvictionRun" value="${maxActive}" />
 	</bean>
 	<!-- 配置sqlsessionfactory bean -->
 	<bean id="sqlSessionFactory"
@@ -66,9 +52,9 @@
 	<!-- 配置Mapper扫描器，配置Mapper对应的实现类代理对象 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!-- basePackage指定扫描的包，在此包下的映射器都会被搜索到，可以指定多个包，包与包之间用逗号或分号分隔 -->
-		<property name="basePackage" value="cn.appinfo.dao" />
+		<property name="basePackage" value="cn.seventeen.appinfo.mapper" />
 	</bean>
 	<!-- 开启组件扫描 -->
 	<context:component-scan
-		base-package="cn.appinfo.service.impl" />
+		base-package="cn.seventeen.appinfo.service.impl" />
 </beans>
