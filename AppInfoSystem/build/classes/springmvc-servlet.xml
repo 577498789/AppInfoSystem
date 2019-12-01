@@ -81,6 +81,7 @@
 			<mvc:exclude-mapping path="/dev/dologin.do"/>
 			<mvc:exclude-mapping path="/backend/gologin.do"/>
 			<mvc:exclude-mapping path="/backend/dologin.do"/>
+			<mvc:exclude-mapping path="/dev/sb.do"/>
 			<bean class="cn.seventeen.appinfo.interceptor.Interceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>

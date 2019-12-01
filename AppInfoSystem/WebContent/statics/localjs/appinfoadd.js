@@ -1,5 +1,5 @@
 $(function(){  
-	//动态加载所属平台列表
+	/*	//动态加载所属平台列表
 	$.ajax({
 		type:"GET",//请求类型
 		url:"datadictionarylist.json",//请求的url
@@ -34,14 +34,14 @@ $(function(){
 		error:function(data){//当访问时候，404，500 等非200的错误状态码
 			alert("加载一级分类列表失败！");
 		}
-	});  
+	});  */
 	//动态加载二级分类列表
 	$("#categoryLevel1").change(function(){
 		var categoryLevel1 = $("#categoryLevel1").val();
 		if(categoryLevel1 != '' && categoryLevel1 != null){
 			$.ajax({
 				type:"GET",//请求类型
-				url:"categorylevellist.json",//请求的url
+				url:"categorylevellist.do",//请求的url
 				data:{pid:categoryLevel1},//请求参数
 				dataType:"json",//ajax接口（请求url）返回的数据类型
 				success:function(data){//data：返回数据（json对象）
@@ -71,7 +71,7 @@ $(function(){
 		if(categoryLevel2 != '' && categoryLevel2 != null){
 			$.ajax({
 				type:"GET",//请求类型
-				url:"categorylevellist.json",//请求的url
+				url:"categorylevellist.do",//请求的url
 				data:{pid:categoryLevel2},//请求参数
 				dataType:"json",//ajax接口（请求url）返回的数据类型
 				success:function(data){//data：返回数据（json对象）

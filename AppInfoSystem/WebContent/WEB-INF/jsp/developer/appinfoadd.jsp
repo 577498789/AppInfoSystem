@@ -19,7 +19,7 @@
          </div>
        </div> -->
            <div class="clearfix"></div>
-        <form class="form-horizontal form-label-left" action="appinfoaddsave" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal form-label-left" action="${pageContext.request.contextPath }/dev/addAppInfo.do" method="post" enctype="multipart/form-data">
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">软件名称 <span class="required">*</span>
             </label>
@@ -78,28 +78,42 @@
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12"  for="select">所属平台 <span class="required">*</span></label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <select name="flatformId" id="flatformId" class="form-control"   required="required"></select>
+              <select name="flatformId" id="flatformId" class="form-control"   required="required">
+              <option value="">--请选择--</option>
+              	<c:forEach var="item" items="${flatFormList}">
+              		<option value="${item.valueId }">${item.valueName }</option>
+              	</c:forEach>
+              </select>
             </div>
           </div>
           
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="select">一级分类 <span class="required">*</span></label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <select name="categoryLevel1" id="categoryLevel1" class="form-control"   required="required"> </select>
+              <select name="categoryLevel1" id="categoryLevel1" class="form-control"   required="required"> 
+              <option value="">--请选择--</option>
+              	<c:forEach var="item" items="${categoryLevel1List}">
+              		<option value="${item.id }">${item.categoryName }</option>
+              	</c:forEach>
+              </select>
             </div>
           </div>
           
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12"  for="select">二级分类 <span class="required">*</span></label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <select name="categoryLevel2" id="categoryLevel2" class="form-control"  required="required"></select>
+              <select name="categoryLevel2" id="categoryLevel2" class="form-control"  required="required">
+              	<option value="">--请选择--</option>
+              </select>
             </div>
           </div>
           
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="select">三级分类 <span class="required">*</span></label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <select name="categoryLevel3" id="categoryLevel3" class="form-control"  required="required"></select>
+              <select name="categoryLevel3" id="categoryLevel3" class="form-control"  required="required">
+              	<option value="">--请选择--</option>
+              </select>
             </div>
           </div>
           <div class="item form-group">

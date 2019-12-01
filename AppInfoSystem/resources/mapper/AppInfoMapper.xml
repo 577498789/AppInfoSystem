@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.seventeen.appinfo.mapper.AppInfoMapper">
+	<select id="findAppInfos" resultType="AppInfo">
+		SELECT
+		i.id,
+		i.`softwareName`,
+		i.`APKName`,
+		i.`supportROM`,
+		i.`interfaceLanguage`,
+		i.`softwareSize`,
+		i.`updateDate`,
+		i.`devId`,
+		i.`appInfo`,
+		i.`status`,
+		i.`onSaleDate`,
+		i.`offSaleDate`,
+		i.`flatformId`,
+		i.`categoryLevel1`,
+		i.`categoryLevel2`,
+		i.`categoryLevel3`,
+		i.`downloads`,
+		i.`createdBy`,
+		i.`modifyBy`,
+		i.`modifyDate`,
+		i.`logoLocPath`,
+		i.`logoPicPath` ,
+		i.`versionId`,
+		category1.categoryName categoryLevel1Name,
+		category2.categoryName categoryLevel2Name,
+		category3.categoryName categoryLevel3Name,
+		app_status.valueName statusName,
+		APP_FLATFORM.valueName flatformName,
+		u.`devName`,v.`versionNo` 
+		FROM
+		`app_info` i
+		LEFT JOIN `app_version` v ON i.`versionId` = v.`id`
+		INNER JOIN `dev_user` u ON i.`devId` = u.`id`
+		INNER JOIN (SELECT * FROM `data_dictionary` WHERE typeCode="APP_STATUS")
+		app_status ON i.`status` = app_status.valueId
+		INNER JOIN (SELECT * FROM `data_dictionary` WHERE typeCode="APP_FLATFORM")
+		APP_FLATFORM ON i.`flatformId` = APP_FLATFORM.valueId
+		INNER JOIN (SELECT * FROM `app_category` WHERE parentId IS NULL) category1
+		ON i.`categoryLevel1` = category1.id
+		INNER JOIN (SELECT * FROM `app_category` WHERE parentId =1 OR parentId = 2)
+		category2 ON i.`categoryLevel2` = category2.id
+		INNER JOIN (SELECT * FROM `app_category` WHERE parentId IS NOT NULL AND
+		parentId &lt;&gt; 1 AND parentId &lt;&gt; 2) category3 ON i.`categoryLevel3` =	category3.id
+		
+		where devId = #{devId} 
+		 <if test="softwareName !=null and softwareName!=''">
+			and softwareName like concat('%',#{softwareName},'%')
+		</if>
+		<if test="flatformId != null">
+			and i.flatformId = #{flatformId}
+		</if>
+		<if test="status != null">
+			and i.status = #{status}
+		</if>
+		<if test="categoryLevel1 != null">
+			and i.categoryLevel1 = #{categoryLevel1}
+		</if>
+		<if test="categoryLevel2 != null">
+			and i.categoryLevel2 = #{categoryLevel2}
+		</if>
+		<if test="categoryLevel3 != null">
+			and i.categoryLevel3 = #{categoryLevel3}
+		</if>
+		limit #{page.startIndex},#{page.pageSize}
+	</select>
+	
+	<select id="getRecords" resultType="int">
+		SELECT count(*) 
+		FROM
+		`app_info` i
+		LEFT JOIN `app_version` v ON i.`versionId` = v.`id`
+		INNER JOIN `dev_user` u ON i.`devId` = u.`id`
+		INNER JOIN (SELECT * FROM `data_dictionary` WHERE typeCode="APP_STATUS")
+		app_status ON i.`status` = app_status.valueId
+		INNER JOIN (SELECT * FROM `data_dictionary` WHERE typeCode="APP_FLATFORM")
+		APP_FLATFORM ON i.`flatformId` = APP_FLATFORM.valueId
+		INNER JOIN (SELECT * FROM `app_category` WHERE parentId IS NULL) category1
+		ON i.`categoryLevel1` = category1.id
+		INNER JOIN (SELECT * FROM `app_category` WHERE parentId =1 OR parentId = 2)
+		category2 ON i.`categoryLevel2` = category2.id
+		INNER JOIN (SELECT * FROM `app_category` WHERE parentId IS NOT NULL AND
+		parentId &lt;&gt; 1 AND parentId &lt;&gt; 2) category3 ON i.`categoryLevel3` =	category3.id
+		
+		where devId = #{devId} 
+		 <if test="softwareName !=null and softwareName!=''">
+			and softwareName like concat('%',#{softwareName},'%')
+		</if>
+		<if test="flatformId != null">
+			and i.flatformId = #{flatformId}
+		</if>
+		<if test="status != null">
+			and i.status = #{status}
+		</if>
+		<if test="categoryLevel1 != null">
+			and i.categoryLevel1 = #{categoryLevel1}
+		</if>
+		<if test="categoryLevel2 != null">
+			and i.categoryLevel2 = #{categoryLevel2}
+		</if>
+		<if test="categoryLevel3 != null">
+			and i.categoryLevel3 = #{categoryLevel3}
+		</if>
+	</select>
+		
+	<insert id="addAppInfo">
+		insert into app_info values(null,#{softwareName},#{APKName},#{supportROM},#{interfaceLanguage},#{softwareSize},#{updateDate},#{devId},#{appInfo},#{status},#{onSaleDate},#{offSaleDate},#{flatformId},#{categoryLevel3},#{downloads},#{createdBy},#{creationDate},#{modifyBy},#{modifyDate},#{categoryLevel1},#{categoryLevel2},#{logoPicPath},#{logoLocPath},#{versionId});
+	</insert>
+	<select id="getRecordsByAPKName" resultType="int">
+		select count(*) from app_info where APKName=#{APKName}
+	</select>
+	
+	
+</mapper>

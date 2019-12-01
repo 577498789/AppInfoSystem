@@ -1,8 +1,9 @@
 package cn.seventeen.appinfo.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class BackendUser {
+public class BackendUser implements Serializable{
 	private Integer id;			//id
 	private String userCode;	//用户编码			
 	private String userName;	//用户名称	

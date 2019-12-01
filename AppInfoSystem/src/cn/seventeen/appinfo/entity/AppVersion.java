@@ -1,15 +1,17 @@
 package cn.seventeen.appinfo.entity;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
-public class AppVersion {
+public class AppVersion implements Serializable{
 	private Integer id;				//id
 	private Integer appId;			//appId
 	private String versionNo;		//版本号
 	private String versionInfo;		//版本介绍
 	private Integer publishStatus;	//发布状态
 	private String downloadLink;	//下载链接	
-	private double versionSize;		//版本大小	
+	private BigDecimal versionSize;		//版本大小	
 	private Integer createBy;		//创建者
 	private Date creationDate;		//创建时间
 	private Integer modifyBy;		//更新者
@@ -52,10 +54,10 @@ public class AppVersion {
 	public void setDownloadLink(String downloadLink) {
 		this.downloadLink = downloadLink;
 	}
-	public double getVersionSize() {
+	public BigDecimal getVersionSize() {
 		return versionSize;
 	}
-	public void setVersionSize(double versionSize) {
+	public void setVersionSize(BigDecimal versionSize) {
 		this.versionSize = versionSize;
 	}
 	public Integer getCreateBy() {
@@ -102,7 +104,7 @@ public class AppVersion {
 				+ ", modifyDate=" + modifyDate + ", apkLocPath=" + apkLocPath + ", apkFileName=" + apkFileName + "]";
 	}
 	public AppVersion(Integer id, Integer appId, String versionNo, String versionInfo, Integer publishStatus,
-			String downloadLink, double versionSize, Integer createBy, Date creationDate, Integer modifyBy,
+			String downloadLink, BigDecimal versionSize, Integer createBy, Date creationDate, Integer modifyBy,
 			Date modifyDate, String apkLocPath, String apkFileName) {
 		super();
 		this.id = id;
@@ -123,5 +125,6 @@ public class AppVersion {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	
 }
