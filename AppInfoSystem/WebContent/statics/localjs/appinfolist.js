@@ -58,11 +58,11 @@ $("#queryCategoryLevel2").change(function(){
 });
 
 
-$(".addVersion").on("click",function(){
+$(document).on("click",".addVersion",function(){
 	var obj = $(this);
 	window.location.href="appversionadd?id="+obj.attr("appinfoid");
 });
-$(".modifyVersion").on("click",function(){
+$(document).on("click",".modifyVersion",function(){
 	var obj = $(this);
 	var status = obj.attr("status");
 	var versionid = obj.attr("versionid");
@@ -77,7 +77,7 @@ $(".modifyVersion").on("click",function(){
 		alert("该APP应用的状态为：【"+obj.attr("statusname")+"】,不能修改其版本信息，只可进行【新增版本】操作！");
 	}
 });
-$(".modifyAppInfo").on("click",function(){
+$(document).on("click",".modifyAppInfo",function(){
 	var obj = $(this);
 	var status = obj.attr("status");
 	if(status == "1" || status == "3"){//待审核、审核未通过状态下才可以进行修改操作
@@ -170,12 +170,12 @@ var saleSwitchAjax = function(appId,obj){
 
 
 
-$(".viewApp").on("click",function(){
+$(document).on("click",".viewApp",function(){
 	var obj = $(this);
-	window.location.href="appview/"+ obj.attr("appinfoid");
+	window.location.href="showAppInfo/"+ obj.attr("appinfoid")+".do";
 });
 
-$(".deleteApp").on("click",function(){
+$(document).on("click",".deleteApp",function(){
 	var obj = $(this);
 	if(confirm("你确定要删除APP应用【"+obj.attr("appsoftwarename")+"】及其所有的版本吗？")){
 		$.ajax({

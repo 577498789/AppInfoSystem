@@ -14,4 +14,11 @@ public interface AppInfoMapper {
 	Integer getRecords(Map map);
 	//通过名字查询数量
 	Integer getRecordsByAPKName(String APKName);
+	//通过id查询app
+	AppInfo findAppInfoById(Integer id);
+	//删除app
+	Integer deleteAppInfo(Integer id);
+	//修改app信息
+	Integer modifyAppInfo(AppInfo appInfo);
+	
 }

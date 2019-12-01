@@ -4,17 +4,17 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class AdPromotion implements Serializable{
-	private Integer id;					//Ö÷¼ü
+	private Integer id;					//ï¿½ï¿½ï¿½ï¿½
 	private Integer appId;				//appId
-	private String adPicPath;			//¹ã¸æÍ¼Æ¬Â·¾¶
-	private Integer adPV;				//¹ã¸æµã»÷Á¿
-	private Integer carouselPosition;	//ÂÖ²¥Î»
-	private Date startTime;				//ÆðÐ§Ê±¼ä
-	private Date endTime;				//Ê§Ð§Ê±¼ä
-	private Integer createBy;			//´´½¨Õß
-	private Date creationDate;			//´´½¨Ê±¼ä
-	private Integer modifyBy;			//¸üÐÂÕß
-	private Date modifyDate;			//¸üÐÂÊ±¼ä
+	private String adPicPath;			//ï¿½ï¿½ï¿½Í¼Æ¬Â·ï¿½ï¿½
+	private Integer adPV;				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private Integer carouselPosition;	//ï¿½Ö²ï¿½Î»
+	private Date startTime;				//ï¿½ï¿½Ð§Ê±ï¿½ï¿½
+	private Date endTime;				//Ê§Ð§Ê±ï¿½ï¿½
+	private Integer createdBy;			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private Date creationDate;			//ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+	private Integer modifyBy;			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private Date modifyDate;			//ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 	public Integer getId() {
 		return id;
 	}
@@ -57,11 +57,11 @@ public class AdPromotion implements Serializable{
 	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
 	}
-	public Integer getCreateBy() {
-		return createBy;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
-	public void setCreateBy(Integer createBy) {
-		this.createBy = createBy;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 	public Date getCreationDate() {
 		return creationDate;
@@ -83,17 +83,13 @@ public class AdPromotion implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Ad_Promotion [id=" + id + ", appId=" + appId + ", adPicPath=" + adPicPath + ", adPV=" + adPV
+		return "AdPromotion [id=" + id + ", appId=" + appId + ", adPicPath=" + adPicPath + ", adPV=" + adPV
 				+ ", carouselPosition=" + carouselPosition + ", startTime=" + startTime + ", endTime=" + endTime
-				+ ", createBy=" + createBy + ", creationDate=" + creationDate + ", modifyBy=" + modifyBy
+				+ ", createdBy=" + createdBy + ", creationDate=" + creationDate + ", modifyBy=" + modifyBy
 				+ ", modifyDate=" + modifyDate + "]";
 	}
-	public AdPromotion() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	public AdPromotion(Integer id, Integer appId, String adPicPath, Integer adPV, Integer carouselPosition,
-			Date startTime, Date endTime, Integer createBy, Date creationDate, Integer modifyBy, Date modifyDate) {
+			Date startTime, Date endTime, Integer createdBy, Date creationDate, Integer modifyBy, Date modifyDate) {
 		super();
 		this.id = id;
 		this.appId = appId;
@@ -102,10 +98,15 @@ public class AdPromotion implements Serializable{
 		this.carouselPosition = carouselPosition;
 		this.startTime = startTime;
 		this.endTime = endTime;
-		this.createBy = createBy;
+		this.createdBy = createdBy;
 		this.creationDate = creationDate;
 		this.modifyBy = modifyBy;
 		this.modifyDate = modifyDate;
 	}
+	public AdPromotion() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 	
 }

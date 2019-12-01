@@ -9,15 +9,15 @@ public class DevUser implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private Integer id;			//id
-	private String devCode;		//¿ª·¢ÕßÕËºÅ
-	private String devName;		//¿ª·¢ÕßÃû³Æ
-	private String devPassword;	//¿ª·¢ÕßÃÜÂë
-	private String devEmail;	//¿ª·¢Õßµç×ÓÓÊÏä
-	private String devInfo;		//¿ª·¢Õß¼ò½é
-	private Integer createBy;	//´´½¨Õß
-	private Date creationDate;	//´´½¨Ê±¼ä
-	private Integer modifyBy;	//¸üÐÂÕß
-	private Date modifyDate;	//×îÐÂ¸üÐÂÊ±¼ä
+	private String devCode;		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëºï¿½
+	private String devName;		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String devPassword;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String devEmail;	//ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String devInfo;		//ï¿½ï¿½ï¿½ï¿½ï¿½ß¼ï¿½ï¿½
+	private Integer createdBy;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private Date creationDate;	//ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+	private Integer modifyBy;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private Date modifyDate;	//ï¿½ï¿½ï¿½Â¸ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 	public Integer getId() {
 		return id;
 	}
@@ -54,11 +54,11 @@ public class DevUser implements Serializable{
 	public void setDevInfo(String devInfo) {
 		this.devInfo = devInfo;
 	}
-	public Integer getCreateBy() {
-		return createBy;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
-	public void setCreateBy(Integer createBy) {
-		this.createBy = createBy;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 	public Date getCreationDate() {
 		return creationDate;
@@ -84,11 +84,11 @@ public class DevUser implements Serializable{
 	@Override
 	public String toString() {
 		return "DevUser [id=" + id + ", devCode=" + devCode + ", devName=" + devName + ", devPassword=" + devPassword
-				+ ", devEmail=" + devEmail + ", devInfo=" + devInfo + ", createBy=" + createBy + ", creationDate="
+				+ ", devEmail=" + devEmail + ", devInfo=" + devInfo + ", createdBy=" + createdBy + ", creationDate="
 				+ creationDate + ", modifyBy=" + modifyBy + ", modifyDate=" + modifyDate + "]";
 	}
 	public DevUser(Integer id, String devCode, String devName, String devPassword, String devEmail, String devInfo,
-			Integer createBy, Date creationDate, Integer modifyBy, Date modifyDate) {
+			Integer createdBy, Date creationDate, Integer modifyBy, Date modifyDate) {
 		super();
 		this.id = id;
 		this.devCode = devCode;
@@ -96,7 +96,7 @@ public class DevUser implements Serializable{
 		this.devPassword = devPassword;
 		this.devEmail = devEmail;
 		this.devInfo = devInfo;
-		this.createBy = createBy;
+		this.createdBy = createdBy;
 		this.creationDate = creationDate;
 		this.modifyBy = modifyBy;
 		this.modifyDate = modifyDate;
@@ -105,5 +105,6 @@ public class DevUser implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 
 }

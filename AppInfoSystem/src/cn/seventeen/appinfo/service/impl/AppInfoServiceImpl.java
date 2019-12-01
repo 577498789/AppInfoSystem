@@ -38,4 +38,24 @@ public class AppInfoServiceImpl implements AppInfoService {
 		return mapper.addAppInfo(appInfo)>0;
 	}
 
+	@Override
+	public boolean exist(String APKName) {
+		return mapper.getRecordsByAPKName(APKName)>0;
+	}
+
+	@Override
+	public AppInfo findAppInfoById(Integer id) {
+		return mapper.findAppInfoById(id);
+	}
+
+	@Override
+	public boolean deleteAppInfo(Integer id) {
+		return mapper.deleteAppInfo(id)>0;
+	}
+
+	@Override
+	public boolean modifyAppInfo(AppInfo appInfo) {
+		return mapper.modifyAppInfo(appInfo)>0;
+	}
+
 }

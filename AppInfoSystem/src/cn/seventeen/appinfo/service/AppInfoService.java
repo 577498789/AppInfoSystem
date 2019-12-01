@@ -16,4 +16,15 @@ public interface AppInfoService {
 	// 添加app
 	boolean addAppInfo(AppInfo appInfo);
 
+	// 通过名字查询数量
+	boolean exist(String APKName);
+
+	// 通过id查询app
+	AppInfo findAppInfoById(Integer id);
+
+	// 删除app
+	boolean deleteAppInfo(Integer id);
+
+	// 修改app信息
+	boolean modifyAppInfo(AppInfo appInfo);
 }

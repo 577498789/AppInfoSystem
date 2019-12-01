@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -15,15 +16,18 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import cn.seventeen.appinfo.entity.AppInfo;
+import cn.seventeen.appinfo.entity.AppVersion;
 import cn.seventeen.appinfo.entity.DevUser;
 import cn.seventeen.appinfo.entity.Page;
 import cn.seventeen.appinfo.service.AppCategoryService;
 import cn.seventeen.appinfo.service.AppInfoService;
+import cn.seventeen.appinfo.service.AppVersionService;
 import cn.seventeen.appinfo.service.DataDictionaryService;
 import cn.seventeen.appinfo.service.DevUserService;
 
@@ -40,6 +44,8 @@ public class DevController {
 	private AppCategoryService appCategoryService;
 	@Resource
 	private DataDictionaryService dataDictionaryService;
+	@Resource
+	private AppVersionService appVersionService;
 	
 	private Map<String,Object> map = new HashMap<String, Object>();
 	//È¥µÇÂ¼Ò³Ãæ
@@ -123,10 +129,16 @@ public class DevController {
 	}
 	
 	@RequestMapping("goAddAppInfo")
-	public Object goAddAppInfo(Model model) {
+	public String goAddAppInfo(Model model) {
 		model.addAttribute("flatFormList", dataDictionaryService.findDataDictionaryByTypeCode("APP_FLATFORM"));
 		model.addAttribute("categoryLevel1List", appCategoryService.findAppCategorysByParentId(null));
 		return "developer/appinfoadd";
+	}
+	
+	@RequestMapping("apkNameExist")
+	@ResponseBody
+	public Object apkNameExist(String APKName) {
+		return appInfoService.exist(APKName);
 	}
 	
 	@RequestMapping("addAppInfo")
@@ -165,6 +177,14 @@ public class DevController {
 		}
 	}
 	
+	@RequestMapping("showAppInfo/{id}")
+	public String showAppInfo(@PathVariable Integer id,Model model) {
+		AppInfo appInfo = appInfoService.findAppInfoById(id);
+		List<AppVersion> appVersionList = appVersionService.findAppVersionsByAppId(id);
+		model.addAttribute("appInfo", appInfo);
+		model.addAttribute("appVersionList", appVersionList);
+		return"developer/appinfoview";
+	}
 	@RequestMapping("sb")
 	public String sb() {
 		return"developer/appinfoadd";

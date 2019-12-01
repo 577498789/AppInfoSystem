@@ -8,7 +8,7 @@ public class DataDictionary {
 	private String typeName;
 	private Integer valueId;
 	private String valueName;
-	private Integer createBy;
+	private Integer createdBy;
 	private Date creationDate;
 	private Integer modifyBy;
 	private Date modifyDate;
@@ -42,11 +42,11 @@ public class DataDictionary {
 	public void setValueName(String valueName) {
 		this.valueName = valueName;
 	}
-	public Integer getCreateBy() {
-		return createBy;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
-	public void setCreateBy(Integer createBy) {
-		this.createBy = createBy;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 	public Date getCreationDate() {
 		return creationDate;
@@ -69,25 +69,25 @@ public class DataDictionary {
 	@Override
 	public String toString() {
 		return "DataDictionary [id=" + id + ", typeCode=" + typeCode + ", typeName=" + typeName + ", valueId=" + valueId
-				+ ", valueName=" + valueName + ", createBy=" + createBy + ", creationDate=" + creationDate
+				+ ", valueName=" + valueName + ", createdBy=" + createdBy + ", creationDate=" + creationDate
 				+ ", modifyBy=" + modifyBy + ", modifyDate=" + modifyDate + "]";
 	}
-	public DataDictionary() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	public DataDictionary(Integer id, String typeCode, String typeName, Integer valueId, String valueName,
-			Integer createBy, Date creationDate, Integer modifyBy, Date modifyDate) {
+			Integer createdBy, Date creationDate, Integer modifyBy, Date modifyDate) {
 		super();
 		this.id = id;
 		this.typeCode = typeCode;
 		this.typeName = typeName;
 		this.valueId = valueId;
 		this.valueName = valueName;
-		this.createBy = createBy;
+		this.createdBy = createdBy;
 		this.creationDate = creationDate;
 		this.modifyBy = modifyBy;
 		this.modifyDate = modifyDate;
+	}
+	public DataDictionary() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	
 }

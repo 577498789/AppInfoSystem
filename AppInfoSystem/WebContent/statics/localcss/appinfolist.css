@@ -9,3 +9,10 @@
 	line-height: 40px;
 	vertical-align: middle;
 }
+
+.tooltip{
+	z-index:9999999999;
+}
+.dropdown-menu{
+	min-width:105px;
+}

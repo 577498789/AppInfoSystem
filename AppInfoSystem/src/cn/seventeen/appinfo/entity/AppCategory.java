@@ -7,7 +7,7 @@ public class AppCategory {
 	private String categoryCode;
 	private String categoryName;
 	private Integer parentId;
-	private	Integer createBy;
+	private	Integer createdBy;
 	private Date creationTime;
 	private Integer modifyBy;
 	private Date modifyDate;
@@ -35,11 +35,11 @@ public class AppCategory {
 	public void setParentId(Integer parentId) {
 		this.parentId = parentId;
 	}
-	public Integer getCreateBy() {
-		return createBy;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
-	public void setCreateBy(Integer createBy) {
-		this.createBy = createBy;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 	public Date getCreationTime() {
 		return creationTime;
@@ -62,17 +62,17 @@ public class AppCategory {
 	@Override
 	public String toString() {
 		return "AppCategory [id=" + id + ", categoryCode=" + categoryCode + ", categoryName=" + categoryName
-				+ ", parentId=" + parentId + ", createBy=" + createBy + ", creationTime=" + creationTime + ", modifyBy="
-				+ modifyBy + ", modifyDate=" + modifyDate + "]";
+				+ ", parentId=" + parentId + ", createdBy=" + createdBy + ", creationTime=" + creationTime
+				+ ", modifyBy=" + modifyBy + ", modifyDate=" + modifyDate + "]";
 	}
-	public AppCategory(Integer id, String categoryCode, String categoryName, Integer parentId, Integer createBy,
+	public AppCategory(Integer id, String categoryCode, String categoryName, Integer parentId, Integer createdBy,
 			Date creationTime, Integer modifyBy, Date modifyDate) {
 		super();
 		this.id = id;
 		this.categoryCode = categoryCode;
 		this.categoryName = categoryName;
 		this.parentId = parentId;
-		this.createBy = createBy;
+		this.createdBy = createdBy;
 		this.creationTime = creationTime;
 		this.modifyBy = modifyBy;
 		this.modifyDate = modifyDate;

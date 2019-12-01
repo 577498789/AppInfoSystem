@@ -5,14 +5,14 @@ import java.util.Date;
 
 public class BackendUser implements Serializable{
 	private Integer id;			//id
-	private String userCode;	//ÓÃ»§±àÂë			
-	private String userName;	//ÓÃ»§Ãû³Æ	
-	private Integer userType;	//ÓÃ»§½ÇÉ«ÀàÐÍ
-	private Integer createBy;	//´´½¨Õß
-	private Date creationDate;	//´´½¨Ê±¼ä
-	private Integer modifyBy;	//¸üÐÂÕß
-	private Date modifyDate;	//¸üÐÂÊ±¼ä
-	private String userPassword;//ÓÃ»§ÃÜÂë
+	private String userCode;	//ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½			
+	private String userName;	//ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½	
+	private Integer userType;	//ï¿½Ã»ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½
+	private Integer createdBy;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private Date creationDate;	//ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+	private Integer modifyBy;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private Date modifyDate;	//ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+	private String userPassword;//ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
 	public Integer getId() {
 		return id;
 	}
@@ -37,11 +37,11 @@ public class BackendUser implements Serializable{
 	public void setUserType(Integer userType) {
 		this.userType = userType;
 	}
-	public Integer getCreateBy() {
-		return createBy;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
-	public void setCreateBy(Integer createBy) {
-		this.createBy = createBy;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 	public Date getCreationDate() {
 		return creationDate;
@@ -70,17 +70,17 @@ public class BackendUser implements Serializable{
 	@Override
 	public String toString() {
 		return "BackendUser [id=" + id + ", userCode=" + userCode + ", userName=" + userName + ", userType=" + userType
-				+ ", createBy=" + createBy + ", creationDate=" + creationDate + ", modifyBy=" + modifyBy
+				+ ", createdBy=" + createdBy + ", creationDate=" + creationDate + ", modifyBy=" + modifyBy
 				+ ", modifyDate=" + modifyDate + ", userPassword=" + userPassword + "]";
 	}
-	public BackendUser(Integer id, String userCode, String userName, Integer userType, Integer createBy,
+	public BackendUser(Integer id, String userCode, String userName, Integer userType, Integer createdBy,
 			Date creationDate, Integer modifyBy, Date modifyDate, String userPassword) {
 		super();
 		this.id = id;
 		this.userCode = userCode;
 		this.userName = userName;
 		this.userType = userType;
-		this.createBy = createBy;
+		this.createdBy = createdBy;
 		this.creationDate = creationDate;
 		this.modifyBy = modifyBy;
 		this.modifyDate = modifyDate;
@@ -90,5 +90,6 @@ public class BackendUser implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	
 }

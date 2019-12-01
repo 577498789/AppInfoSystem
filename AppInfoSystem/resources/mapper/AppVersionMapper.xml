@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.seventeen.appinfo.mapper.AppVersionMapper">
+	
+	<select id="findAppVersionsByAppId" resultType="AppVersion">
+		SELECT * 
+		FROM 
+		app_version v 
+		INNER JOIN (SELECT id AS appId,APKName AS appName  FROM app_info) i ON v.`appId` = i.appId
+		INNER JOIN (SELECT valueId,valueName AS publishStatusName FROM data_dictionary WHERE typeCode="PUBLISH_STATUS") s ON v.`publishStatus` = s.valueId 
+		WHERE v.`appId` = #{appId}
+	</select>
+		
+	<insert id="addAppVersion">
+		insert into app_version values(null,#{appId},#{versionNo},#{versionInfo},#{publishStatus},#{downloadLink},#{versionSize},#{createdBy},#{creationDate},#{modifyBy},#{modifyDate},#{apkLocPath},#{apkFileName})
+	</insert>
+	<update id="modifyAppVersion">
+		update app_version set 1=1
+		
+		where id = #{id}
+	</update>
+	<delete id="deleteAppVersionsByAppId">
+		delete from app_version where appId = #{appId}
+	</delete>
+</mapper>
