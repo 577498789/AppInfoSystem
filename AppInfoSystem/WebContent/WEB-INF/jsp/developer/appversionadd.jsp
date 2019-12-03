@@ -84,8 +84,11 @@
         </div>
         <div class="x_content" style="display: block;">
          <br>
-        <form class="form-horizontal form-label-left" action="addversionsave" method="post" enctype="multipart/form-data">
-           <input type="hidden" name="appId" name="appId" value="${appVersion.appId}">
+<!-- 表单 -->
+<!-- 表单 -->
+<!-- 表单 -->
+        <form class="form-horizontal form-label-left" action="addAppversion.do" method="post" enctype="multipart/form-data">
+           <input type="hidden" name="appId" name="appId" value="${appId}">
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">版本号 <span class="required">*</span>
             </label>
@@ -133,7 +136,7 @@
               <button id="send" type="submit" class="btn btn-success">保存</button>
               <button type="button" class="btn btn-primary" id="back">返回</button>
             </div>
-          </div>
+          </div>  
         </form>
         </div>
       </div>

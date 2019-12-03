@@ -60,7 +60,7 @@ $("#queryCategoryLevel2").change(function(){
 
 $(document).on("click",".addVersion",function(){
 	var obj = $(this);
-	window.location.href="appversionadd?id="+obj.attr("appinfoid");
+	window.location.href="goAddAppVersion.do?id="+obj.attr("appinfoid");
 });
 $(document).on("click",".modifyVersion",function(){
 	var obj = $(this);
@@ -71,7 +71,7 @@ $(document).on("click",".modifyVersion",function(){
 		if(versionid == null || versionid == ""){
 			alert("该APP应用无版本信息，请先增加版本信息！");
 		}else{
-			window.location.href="appversionmodify?vid="+ versionid + "&aid="+ appinfoid;
+			window.location.href="goModifyAppVersion.do?versionId="+ versionid + "&appId="+ appinfoid;
 		}
 	}else{
 		alert("该APP应用的状态为：【"+obj.attr("statusname")+"】,不能修改其版本信息，只可进行【新增版本】操作！");
@@ -81,7 +81,7 @@ $(document).on("click",".modifyAppInfo",function(){
 	var obj = $(this);
 	var status = obj.attr("status");
 	if(status == "1" || status == "3"){//待审核、审核未通过状态下才可以进行修改操作
-		window.location.href="appinfomodify?id="+ obj.attr("appinfoid");
+		window.location.href="goModifyAppInfo"+ obj.attr("appinfoid")+".do";
 	}else{
 		alert("该APP应用的状态为：【"+obj.attr("statusname")+"】,不能修改！");
 	}
@@ -172,25 +172,28 @@ var saleSwitchAjax = function(appId,obj){
 
 $(document).on("click",".viewApp",function(){
 	var obj = $(this);
-	window.location.href="showAppInfo/"+ obj.attr("appinfoid")+".do";
+	window.location.href="showAppInfo"+ obj.attr("appinfoid")+".do";
 });
 
 $(document).on("click",".deleteApp",function(){
 	var obj = $(this);
 	if(confirm("你确定要删除APP应用【"+obj.attr("appsoftwarename")+"】及其所有的版本吗？")){
 		$.ajax({
-			type:"GET",
-			url:"delapp.json",
+			type:"POST",
+			url:"delAppInfo.do",
 			data:{id:obj.attr("appinfoid")},
-			dataType:"json",
 			success:function(data){
-				if(data.delResult == "true"){//删除成功：移除删除行
+				if(data == true){//删除成功：移除删除行
 					alert("删除成功");
-					obj.parents("tr").remove();
-				}else if(data.delResult == "false"){//删除失败
+					var records = $("#datatable-responsive tr").length;
+					var pageNo = $("#pageNoNo").html();
+					if(records==2&&pageNo>1){
+						pageNo-=1
+					}
+					alert(pageNo)
+					changePage(pageNo);
+				}else if(data == false){//删除失败
 					alert("对不起，删除AAP应用【"+obj.attr("appsoftwarename")+"】失败");
-				}else if(data.delResult == "notexist"){
-					alert("对不起，APP应用【"+obj.attr("appsoftwarename")+"】不存在");
 				}
 			},
 			error:function(data){

@@ -86,7 +86,7 @@
          <br>
         <form class="form-horizontal form-label-left" action="appversionmodifysave" method="post" enctype="multipart/form-data">
            <input type="hidden" name="id" id="id" value="${appVersion.id}">
-           <input type="hidden" name="appId" id="appId" value="${appVersion.appId}">
+           <input type="hidden" name="APKName" id="appId" value="${appVersion.appId}">
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">版本号 <span class="required">*</span>
             </label>

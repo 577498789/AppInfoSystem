@@ -10,7 +10,7 @@
              <div class="clearfix"></div>
       </div>
       <div class="x_content">
-        <form class="form-horizontal form-label-left" action="appinfomodifysave" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal form-label-left" action="modifyAppInfo.do" method="post" enctype="multipart/form-data">
           <input type="hidden" name="id" id="id" value="${appInfo.id}">
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">软件名称 <span class="required">*</span>
@@ -72,31 +72,44 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12"  for="select">所属平台 <span class="required">*</span></label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input type="hidden" value="${appInfo.flatformId}" id="fid" />
-              <select name="flatformId" id="flatformId" class="form-control" required="required"></select>
+              <select name="flatformId" id="flatformId" class="form-control" required="required">
+              	<c:forEach var="item" items="${ flatFormList }">
+              		<option value="${item.valueId }">${item.valueName }</option>
+              	</c:forEach>
+              </select>
             </div>
           </div>
           
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="select">一级分类 <span class="required">*</span></label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="hidden" value="${appInfo.categoryLevel1}" id="cl1" />
-              <select name="categoryLevel1" id="categoryLevel1" class="form-control"  required="required"></select>
+              <select name="categoryLevel1" id="categoryLevel1" class="form-control" value="${appInfo.categoryLevel1}"  required="required">
+              	<c:forEach var="item" items="${ categoryLevel1List }">
+              		<option value="${item.id }">${item.categoryName }</option>
+              	</c:forEach>
+              </select>
             </div>
           </div>
           
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12"  for="select">二级分类 <span class="required">*</span></label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-            	<input type="hidden" value="${appInfo.categoryLevel2}" id="cl2" />
-              <select name="categoryLevel2" id="categoryLevel2" class="form-control"  required="required"></select>
+              <select name="categoryLevel2" id="categoryLevel2" class="form-control"  value="${appInfo.categoryLevel2}"  required="required">
+              	<c:forEach var="item" items="${ categoryLevel2List }">
+              		<option value="${item.id }">${item.categoryName }</option>
+              	</c:forEach>
+              </select>
             </div>
           </div>
           
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="select">三级分类 <span class="required">*</span></label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="hidden" value="${appInfo.categoryLevel3}" id="cl3" />
-              <select name="categoryLevel3" id="categoryLevel3" class="form-control"  required="required"></select>
+              <select name="categoryLevel3" id="categoryLevel3" class="form-control" value="${appInfo.categoryLevel3}"   required="required">
+                <c:forEach var="item" items="${ categoryLevel3List}" >
+              		<option value="${item.id }">${item.categoryName }</option>
+              	</c:forEach>
+              </select>
             </div>
           </div>
           <div class="item form-group">

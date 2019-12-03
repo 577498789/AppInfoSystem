@@ -185,7 +185,7 @@
     </div>
      <div class="form-group">
         <div class="col-md-6 col-md-offset-3">
-          <button type="button" class="btn btn-primary" id="back">返回</button>
+          <button type="button" class="btn btn-primary" onclick="window.history.back()">返回</button>
         </div>
       </div>
     <div class="clearfix"></div>

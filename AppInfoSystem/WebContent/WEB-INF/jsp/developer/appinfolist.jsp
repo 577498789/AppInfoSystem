@@ -210,8 +210,8 @@
 				<div class="row">
 					<div class="col-sm-5">
 						<div class="dataTables_info" id="datatable-responsive_info"
-							role="status" aria-live="polite">共${pages.records }条记录
-							${pages.pageNo }/${pages.pages }页</div>
+							role="status" aria-live="polite" >共${pages.records }条记录
+							<span id="pageNoNo">${pages.pageNo }</span>/${pages.pages }页</div>
 					</div>
 					<div class="col-sm-7">
 						<div class="dataTables_paginate paging_simple_numbers"

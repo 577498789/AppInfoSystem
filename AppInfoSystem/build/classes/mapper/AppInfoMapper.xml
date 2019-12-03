@@ -50,64 +50,57 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INNER JOIN (SELECT * FROM `app_category` WHERE parentId IS NOT NULL AND
 		parentId &lt;&gt; 1 AND parentId &lt;&gt; 2) category3 ON i.`categoryLevel3` =	category3.id
 		
-		where i.devId = #{devId} 
-		 <if test="softwareName !=null and softwareName!=''">
-			and softwareName like concat('%',#{softwareName},'%')
-		</if>
-		<if test="flatformId != null">
-			and i.flatformId = #{flatformId}
-		</if>
-		<if test="status != null">
-			and i.status = #{status}
-		</if>
-		<if test="categoryLevel1 != null">
-			and i.categoryLevel1 = #{categoryLevel1}
-		</if>
-		<if test="categoryLevel2 != null">
-			and i.categoryLevel2 = #{categoryLevel2}
-		</if>
-		<if test="categoryLevel3 != null">
-			and i.categoryLevel3 = #{categoryLevel3}
-		</if>
+		<where>
+			<if test="devId!=null">
+				i.devId = #{devId} 
+			</if>
+		 	<if test="softwareName !=null and softwareName!=''">
+				and softwareName like concat('%',#{softwareName},'%')
+			</if>
+			<if test="flatformId != null">
+				and i.flatformId = #{flatformId}
+			</if>
+			<if test="status != null">
+				and i.status = #{status}
+			</if>
+			<if test="categoryLevel1 != null">
+				and i.categoryLevel1 = #{categoryLevel1}
+			</if>
+			<if test="categoryLevel2 != null">
+				and i.categoryLevel2 = #{categoryLevel2}
+			</if>
+			<if test="categoryLevel3 != null">
+				and i.categoryLevel3 = #{categoryLevel3}
+			</if>
+		</where>
 		limit #{page.startIndex},#{page.pageSize}
 	</select>
 	<!-- 通过条件查询app信息条数 -->
 	<select id="getRecords" resultType="int">
-		SELECT count(*) 
-		FROM
-		`app_info` i
-		LEFT JOIN `app_version` v ON i.`versionId` = v.`id`
-		INNER JOIN `dev_user` u ON i.`devId` = u.`id`
-		INNER JOIN (SELECT * FROM `data_dictionary` WHERE typeCode="APP_STATUS")
-		app_status ON i.`status` = app_status.valueId
-		INNER JOIN (SELECT * FROM `data_dictionary` WHERE typeCode="APP_FLATFORM")
-		APP_FLATFORM ON i.`flatformId` = APP_FLATFORM.valueId
-		INNER JOIN (SELECT * FROM `app_category` WHERE parentId IS NULL) category1
-		ON i.`categoryLevel1` = category1.id
-		INNER JOIN (SELECT * FROM `app_category` WHERE parentId =1 OR parentId = 2)
-		category2 ON i.`categoryLevel2` = category2.id
-		INNER JOIN (SELECT * FROM `app_category` WHERE parentId IS NOT NULL AND
-		parentId &lt;&gt; 1 AND parentId &lt;&gt; 2) category3 ON i.`categoryLevel3` =	category3.id
-		
-		where i.devId = #{devId} 
-		 <if test="softwareName !=null and softwareName!=''">
-			and softwareName like concat('%',#{softwareName},'%')
-		</if>
-		<if test="flatformId != null">
-			and i.flatformId = #{flatformId}
-		</if>
-		<if test="status != null">
-			and i.status = #{status}
-		</if>
-		<if test="categoryLevel1 != null">
-			and i.categoryLevel1 = #{categoryLevel1}
-		</if>
-		<if test="categoryLevel2 != null">
-			and i.categoryLevel2 = #{categoryLevel2}
-		</if>
-		<if test="categoryLevel3 != null">
-			and i.categoryLevel3 = #{categoryLevel3}
-		</if>
+		SELECT count(*) FROM `app_info` i
+		<where>
+			<if test="devId!=null">
+				i.devId = #{devId} 
+			</if>
+		 	<if test="softwareName !=null and softwareName!=''">
+				and i.softwareName like concat('%',#{softwareName},'%')
+			</if>
+			<if test="flatformId != null">
+				and i.flatformId = #{flatformId}
+			</if>
+			<if test="status != null">
+				and i.status = #{status}
+			</if>
+			<if test="categoryLevel1 != null">
+				and i.categoryLevel1 = #{categoryLevel1}
+			</if>
+			<if test="categoryLevel2 != null">
+				and i.categoryLevel2 = #{categoryLevel2}
+			</if>
+			<if test="categoryLevel3 != null">
+				and i.categoryLevel3 = #{categoryLevel3}
+			</if>
+		</where>
 	</select>
 	<!-- 新增应用信息 -->	
 	<insert id="addAppInfo">
@@ -168,50 +161,50 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<!-- 修改app信息 -->
 	<update id="modifyAppInfo">
-		UPDATE app_info i SET 
-		i.`modifyDate` = NOW()
-		,i.`updateDate`=NOW()
-		<if test="softwareName !=null and softwareName !=''">
-			, i.`softwareName`=#{softwareName}
+		UPDATE app_info SET 
+		`modifyDate` = NOW()
+		,`updateDate`=NOW()
+		<if test="modifyBy !=null ">
+			, `modifyBy`=#{modifyBy}
 		</if>
-		<if test="APKName !=null and APKName !=''">
-			, i.`APKName`=#{APKName}
+		<if test="softwareName !=null and softwareName !=''">
+			, `softwareName`=#{softwareName}
 		</if>
 		<if test="supportROM !=null and supportROM !=''">
-			, i.`supportROM`=#{supportROM}
+			, `supportROM`=#{supportROM}
 		</if>
 		<if test="interfaceLanguage !=null and interfaceLanguage !=''">
-			, i.`interfaceLanguage`=#{interfaceLanguage}
+			, `interfaceLanguage`=#{interfaceLanguage}
 		</if>
 		<if test="softwareSize !=null">
-			, i.`softwareSize`=#{softwareSize}
+			, `softwareSize`=#{softwareSize}
 		</if>
 		<if test="downloads !=null">
-			, i.`downloads`=#{downloads}
+			, `downloads`=#{downloads}
 		</if>
 		<if test="flatformId !=null">
-			, i.`flatformId`=#{flatformId}
+			, `flatformId`=#{flatformId}
 		</if>
 		<if test="categoryLevel1 !=null">
-			, i.`categoryLevel1`=#{categoryLevel1}
+			, `categoryLevel1`=#{categoryLevel1}
 		</if>
 		<if test="categoryLevel2 !=null">
-			, i.`categoryLevel2`=#{categoryLevel2}
+			, `categoryLevel2`=#{categoryLevel2}
 		</if>
 		<if test="categoryLevel3 !=null">
-			, i.`categoryLevel3`=#{categoryLevel3}
+			, `categoryLevel3`=#{categoryLevel3}
 		</if>
 		<if test="appInfo !=null and appInfo !=''">
-			, i.`appInfo`=#{appInfo}
+			, `appInfo`=#{appInfo}
 		</if>
 		<if test="logoLocPath !=null and logoLocPath !=''">
-			, i.`logoLocPath`=#{logoLocPath}
+			, `logoLocPath`=#{logoLocPath}
 		</if>
 		<if test="logoPicPath !=null and logoPicPath !=''">
-			, i.`logoPicPath`=#{logoPicPath}
+			, `logoPicPath`=#{logoPicPath}
 		</if>
 		
-		WHERE i.id = #{id}
+		WHERE id = #{id}
 	</update>
 	<!-- 删除app信息 -->
 	<delete id="deleteAppInfo">
