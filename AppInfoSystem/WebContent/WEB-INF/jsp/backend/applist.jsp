@@ -14,8 +14,8 @@
 				<div class="clearfix"></div>
 			</div>
 			<div class="x_content">
-				<form method="post" action="list">
-					<input type="hidden" name="pageIndex" value="1" />
+				<form  id="selectInfo">
+					<input type="hidden" name="status" value="1" />
 			    <ul>
 					<li>
 						<div class="form-group">
@@ -31,8 +31,8 @@
 							<label class="control-label col-md-3 col-sm-3 col-xs-12">所属平台</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<select name="queryFlatformId" class="form-control">
-									<c:if test="${flatFormList != null }">
 									   <option value="">--请选择--</option>
+									<c:if test="${flatFormList != null }">
 									   <c:forEach var="dataDictionary" items="${flatFormList}">
 									   		<option <c:if test="${dataDictionary.valueId == queryFlatformId }">selected="selected"</c:if>
 									   		value="${dataDictionary.valueId}">${dataDictionary.valueName}</option>
@@ -47,8 +47,8 @@
 							<label class="control-label col-md-3 col-sm-3 col-xs-12">一级分类</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<select id="queryCategoryLevel1" name="queryCategoryLevel1" class="form-control">
-									<c:if test="${categoryLevel1List != null }">
 									   <option value="">--请选择--</option>
+									<c:if test="${categoryLevel1List != null }">
 									   <c:forEach var="appCategory" items="${categoryLevel1List}">
 									   		<option <c:if test="${appCategory.id == queryCategoryLevel1 }">selected="selected"</c:if>
 									   		value="${appCategory.id}">${appCategory.categoryName}</option>
@@ -64,8 +64,8 @@
 							<div class="col-md-6 col-sm-6 col-xs-12">
 							<input type="hidden" name="categorylevel2list" id="categorylevel2list"/>
         						<select name="queryCategoryLevel2" id="queryCategoryLevel2" class="form-control">
-        							<c:if test="${categoryLevel2List != null }">
 									   <option value="">--请选择--</option>
+        							<c:if test="${categoryLevel2List != null }">
 									   <c:forEach var="appCategory" items="${categoryLevel2List}">
 									   		<option <c:if test="${appCategory.id == queryCategoryLevel2 }">selected="selected"</c:if>
 									   		value="${appCategory.id}">${appCategory.categoryName}</option>
@@ -80,8 +80,8 @@
 							<label class="control-label col-md-3 col-sm-3 col-xs-12">三级分类</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
         						<select name="queryCategoryLevel3" id="queryCategoryLevel3" class="form-control">
-        							<c:if test="${categoryLevel3List != null }">
 									   <option value="">--请选择--</option>
+        							<c:if test="${categoryLevel3List != null }">
 									   <c:forEach var="appCategory" items="${categoryLevel3List}">
 									   		<option <c:if test="${appCategory.id == queryCategoryLevel3 }">selected="selected"</c:if>
 									   		value="${appCategory.id}">${appCategory.categoryName}</option>
@@ -91,7 +91,7 @@
 							</div>
 						</div>
 					</li>
-					<li><button type="submit" class="btn btn-primary"> 查 &nbsp;&nbsp;&nbsp;&nbsp;询 </button></li>
+					<li><button type="button" class="btn btn-primary" onclick="selectBackendAppByInfo()"> 查 &nbsp;&nbsp;&nbsp;&nbsp;询 </button></li>
 				</ul>
 			</form>
 		</div>
@@ -181,33 +181,37 @@
 				<div class="row">
 					<div class="col-sm-5">
 						<div class="dataTables_info" id="datatable-responsive_info"
-							role="status" aria-live="polite">共${pages.totalCount }条记录
-							${pages.currentPageNo }/${pages.totalPageCount }页</div>
+							role="status" aria-live="polite" >共${selectInfoMap.page.records }条记录
+							<span id="pageNoNo">${selectInfoMap.page.pageNo }</span>/${selectInfoMap.page.pages }页</div>
 					</div>
 					<div class="col-sm-7">
 						<div class="dataTables_paginate paging_simple_numbers"
 							id="datatable-responsive_paginate">
 							<ul class="pagination">
-								<c:if test="${pages.currentPageNo > 1}">
+								<c:if test="${selectInfoMap.page.pageNo > 1}">
 									<li class="paginate_button previous"><a
-										href="javascript:page_nav(document.forms[0],1);"
+										href="#"
+										onclick="changeDevPage(1);return false"
 										aria-controls="datatable-responsive" data-dt-idx="0"
 										tabindex="0">首页</a>
 									</li>
 									<li class="paginate_button "><a
-										href="javascript:page_nav(document.forms[0],${pages.currentPageNo-1});"
+										href="#"
+										onclick="changeDevPage(${selectInfoMap.page.pageNo-1});return false"
 										aria-controls="datatable-responsive" data-dt-idx="1"
 										tabindex="0">上一页</a>
 									</li>
 								</c:if>
-								<c:if test="${pages.currentPageNo < pages.totalPageCount }">
+								<c:if test="${selectInfoMap.page.pageNo < selectInfoMap.page.pages }">
 									<li class="paginate_button "><a
-										href="javascript:page_nav(document.forms[0],${pages.currentPageNo+1 });"
+										href="#"
+										onclick="changeDevPage(${selectInfoMap.page.pageNo+1});return false"
 										aria-controls="datatable-responsive" data-dt-idx="1"
 										tabindex="0">下一页</a>
 									</li>
 									<li class="paginate_button next"><a
-										href="javascript:page_nav(document.forms[0],${pages.totalPageCount });"
+										href="#"
+										onclick="changeDevPage(${selectInfoMap.page.pages});return false"
 										aria-controls="datatable-responsive" data-dt-idx="7"
 										tabindex="0">最后一页</a>
 									</li>
@@ -225,3 +229,4 @@
 <%@include file="common/footer.jsp"%>
 <script src="${pageContext.request.contextPath }/statics/localjs/rollpage.js"></script>
 <script src="${pageContext.request.contextPath }/statics/localjs/applist.js"></script>
+<script src="${pageContext.request.contextPath }/statics/localjs/appcategory.js"></script>

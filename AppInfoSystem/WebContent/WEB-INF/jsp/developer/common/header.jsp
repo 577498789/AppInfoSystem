@@ -81,7 +81,7 @@
 										class="fa fa-chevron-down"></span>
 								</a>
 									<ul class="nav child_menu">
-										<li><a href="${pageContext.request.contextPath }/dev/goAppinfoList.do">APP维护</a>
+										<li><a href="${pageContext.request.contextPath }/dev/app/goAppinfoList.do">APP维护</a>
 										</li>
 									</ul></li>
 							</ul>

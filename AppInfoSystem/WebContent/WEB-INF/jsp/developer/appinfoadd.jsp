@@ -19,7 +19,7 @@
          </div>
        </div> -->
            <div class="clearfix"></div>
-        <form class="form-horizontal form-label-left" action="${pageContext.request.contextPath }/dev/addAppInfo.do" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal form-label-left" action="${pageContext.request.contextPath }/dev/app/addAppInfo.do" method="post" enctype="multipart/form-data">
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">软件名称 <span class="required">*</span>
             </label>
@@ -127,7 +127,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">应用简介 <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <textarea id="appInfo" name="appInfo"     required="required"
+              <textarea id="appInfo" name="appInfo" required="required"
               placeholder="请输入本软件的相关信息，本信息作为软件的详细信息进行软件的介绍。" class="form-control col-md-7 col-xs-12"></textarea>
             </div>
           </div>
@@ -143,7 +143,7 @@
           <div class="form-group">
             <div class="col-md-6 col-md-offset-3">
               <button id="send" type="submit" class="btn btn-success">保存</button>
-              <button type="button" class="btn btn-primary" id="back">返回</button>
+              <button type="button" class="btn btn-primary" onclick="history.back()">返回</button>
               <br/><br/>
             </div>
           </div>
@@ -154,3 +154,4 @@
 </div>
 <%@include file="common/footer.jsp"%>
 <script src="${pageContext.request.contextPath }/statics/localjs/appinfoadd.js"></script>
+<script src="${pageContext.request.contextPath }/statics/localjs/appcategory.js"></script>

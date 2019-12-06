@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * 
 		FROM 
 		app_version v 
-		INNER JOIN (SELECT id AS appId,APKName AS appName  FROM app_info) i ON v.`appId` = i.appId
+		INNER JOIN (SELECT id AS appId,softwareName AS appName  FROM app_info) i ON v.`appId` = i.appId
 		INNER JOIN (SELECT valueId,valueName AS publishStatusName FROM data_dictionary WHERE typeCode="PUBLISH_STATUS") s ON v.`publishStatus` = s.valueId 
 		WHERE v.`appId` = #{appId} order by id
 	</select>
@@ -16,17 +16,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * 
 		FROM 
 		app_version v 
-		INNER JOIN (SELECT id AS appId,APKName AS appName  FROM app_info) i ON v.`appId` = i.appId
+		INNER JOIN (SELECT id AS appId,softwareName AS appName  FROM app_info) i ON v.`appId` = i.appId
 		INNER JOIN (SELECT valueId,valueName AS publishStatusName FROM data_dictionary WHERE typeCode="PUBLISH_STATUS") s ON v.`publishStatus` = s.valueId 
 		WHERE v.`id` = #{id}
 	</select>
 		
-	<insert id="addAppVersion" >
-<!-- 		<selectKey resultType="java.lang.long" keyProperty="id" order="AFTER">
-			select last_insert_id()
-		</selectKey> -->
-	
-		insert into app_version values(null,#{ver.appId},#{ver.versionNo},#{ver.versionInfo},#{ver.publishStatus},#{ver.downloadLink},#{ver.versionSize},#{ver.createdBy},#{ver.creationDate},#{ver.modifyBy},#{ver.modifyDate},#{ver.apkLocPath},#{ver.apkFileName})
+	<insert id="addAppVersion" useGeneratedKeys="true" keyProperty="id">	
+		insert into app_version values(null,#{appId},#{versionNo},#{versionInfo},#{publishStatus},#{downloadLink},#{versionSize},#{createdBy},#{creationDate},#{modifyBy},#{modifyDate},#{apkLocPath},#{apkFileName})
 	</insert>
 	<update id="modifyAppVersion">
 		UPDATE app_version 
@@ -34,19 +30,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		modifyBy = 1
 		,modifyDate = NOW()
 		<if test="versionInfo !=null and versionInfo !=''">
-			,versionInfo = "1231321313223"
+			,versionInfo = #{versionInfo}
 		</if>
 		<if test="downloadLink !=null and downloadLink !=''">
-			,downloadLink = "1231321313223"
+			,downloadLink = #{downloadLink}
 		</if>
 		<if test="apkFileName !=null and apkFileName !=''">
-			,apkFileName = "1231321313223"
+			,apkFileName = #{apkFileName}
 		</if>
 		<if test="versionNo !=null and versionNo !=''">
-			,versionNo = "1231321313223"
+			,versionNo = #{versionNo}
 		</if>
 		<if test="versionSize !=null and versionSize !=''">
-			,versionSize = "1231321313223"
+			,versionSize = #{versionSize}
 		</if>
 
 		where id = #{id}

@@ -87,7 +87,7 @@
 <!-- 表单 -->
 <!-- 表单 -->
 <!-- 表单 -->
-        <form class="form-horizontal form-label-left" action="addAppversion.do" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal form-label-left" action="${pageContext.request.contextPath }/dev/app/version/addAppversion.do" method="post" enctype="multipart/form-data">
            <input type="hidden" name="appId" name="appId" value="${appId}">
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">版本号 <span class="required">*</span>
@@ -134,7 +134,7 @@
           <div class="form-group">
             <div class="col-md-6 col-md-offset-3">
               <button id="send" type="submit" class="btn btn-success">保存</button>
-              <button type="button" class="btn btn-primary" id="back">返回</button>
+              <button type="button" class="btn btn-primary" onclick="history.back()">返回</button>
             </div>
           </div>  
         </form>

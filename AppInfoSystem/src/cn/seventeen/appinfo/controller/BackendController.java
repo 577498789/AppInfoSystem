@@ -23,7 +23,7 @@ public class BackendController {
 		return"backendlogin";
 	}
 	//µÇÂ¼
-	@RequestMapping("/dologin")
+	@RequestMapping("/login")
 	public String doBackendUserLogin(String userCode, String userPassword,HttpSession session) {
 		BackendUser backendUser = backendUserService.findBackendUserByUserCodeAndUserPassword(userCode, userPassword);
 		if(backendUser!=null) {
@@ -37,6 +37,6 @@ public class BackendController {
 	@RequestMapping("logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return"backendlogin";
+		return"redirect:/index.jsp";
 	}
 }

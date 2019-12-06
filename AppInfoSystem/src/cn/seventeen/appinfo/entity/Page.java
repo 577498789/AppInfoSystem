@@ -64,16 +64,6 @@ public class Page {
 		// TODO Auto-generated constructor stub
 	}
 	public Integer getStartIndex() {
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println(pageNo);
-		System.out.println(pageSize);
-		System.out.println((pageNo-1)*pageSize);
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
 		return (pageNo-1)*pageSize;
 	}
 	

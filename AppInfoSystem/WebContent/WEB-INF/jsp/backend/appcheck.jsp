@@ -14,13 +14,15 @@
           <div class="clearfix"></div>
       </div>
       <div class="x_content1">
-        <form class="form-horizontal form-label-left" action="checksave" method="post">
+       
+
+<form class="form-horizontal form-label-left">
           <input type="hidden" name="id" value="${appInfo.id}">
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">软件名称 <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input class="form-control col-md-7 col-xs-12" value="${appInfo.softwareName}" 
+              <input class="form-control col-md-7 col-xs-12" name="softwareName" value="${appInfo.softwareName}" 
               type="text" readonly="readonly">
             </div>
           </div>
@@ -114,9 +116,9 @@
           </div>
         	<div class="form-group">
         		<div class="col-md-6 col-md-offset-3">
-        		<button id="status" type="submit" name="status" value="2" class="btn btn-success">审核通过</button>
-        		<button id="status" type="submit" name="status" value="3" class="btn btn-success">审核不通过</button>
-          		<button type="button" class="btn btn-primary" id="back">返回</button>
+        		<input type="button"  id="status" type="submit" name="status" value="审核通过" onclick="examineApp(2)" class="btn btn-success">
+        		<input type="button"  id="status" type="submit" name="status" value="审核不通过" onclick="examineApp(3)" class="btn btn-success">
+          		<input type="button" class="btn btn-primary" value="返回" onclick="history.back()">
         		</div>
      		</div>
         </form>
@@ -142,17 +144,18 @@
             </div>
           </div>
           <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">版本大小 <span class="required">*</span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number" >版本大小 <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="number" value="${appVersion.versionSize }" class="form-control col-md-7 col-xs-12">
+              <input type="number" value="${appVersion.versionSize }" class="form-control col-md-7 col-xs-12" readonly>
             </div>
           </div>
        
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12"  for="select">发布状态 <span class="required">*</span></label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="hidden" name="publishStatus" id="publishStatus" value="3">预发布
+              <input type="hidden" name="publishStatus" id="publishStatus" value="3">
+              <input value="预发布"  class="form-control col-md-7 col-xs-12"  readonly>
             </div>
           </div>
         
@@ -160,7 +163,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">版本简介 <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <textarea class="form-control col-md-7 col-xs-12">
+              <textarea class="form-control col-md-7 col-xs-12" readonly>
               ${appVersion.versionInfo }</textarea>
             </div>
           </div>

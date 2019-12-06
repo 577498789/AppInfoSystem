@@ -2,14 +2,25 @@ function page_nav(frm,num){
 		frm.pageIndex.value = num;
 		frm.submit();
 }
-function changePage(pageNo){
-	$.post("/AppInfoSystem/dev/changePage.do","pageNo="+pageNo,function(data){
+function changeDevPage(pageNo){
+	$.post(local+"dev/app/changePage.do","pageNo="+pageNo,function(data){
 		$("#datatable-responsive_wrapper").html(data);
 	});
 }
-function selectAppByInfo(){
+function changeBackendPage(pageNo){
+	$.post(local+"backend/app/changePage.do","pageNo="+pageNo,function(data){
+		$("#datatable-responsive_wrapper").html(data);
+	});
+}
+function selectDevAppByInfo(){
 	var info = $("#selectInfo").serialize();
-	$.post("/AppInfoSystem/dev/findAppinfoByInfo.do",info,function(data){
+	$.post(local+"dev/app/findAppinfoByInfo.do",info,function(data){
+		$("#datatable-responsive_wrapper").html(data);
+	});
+}
+function selectBackendAppByInfo(){
+	var info = $("#selectInfo").serialize();
+	$.post(local+"backend/app/findAppinfoByInfo.do",info,function(data){
 		$("#datatable-responsive_wrapper").html(data);
 	});
 }

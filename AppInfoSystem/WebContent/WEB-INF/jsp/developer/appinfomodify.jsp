@@ -10,7 +10,7 @@
              <div class="clearfix"></div>
       </div>
       <div class="x_content">
-        <form class="form-horizontal form-label-left" action="modifyAppInfo.do" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal form-label-left" action="${pageContext.request.contextPath }/dev/app/modifyAppInfo.do" method="post" enctype="multipart/form-data">
           <input type="hidden" name="id" id="id" value="${appInfo.id}">
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">软件名称 <span class="required">*</span>
@@ -133,13 +133,13 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">LOGO图片 <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-				<input type="hidden" id="logoPicPath" name="logoPicPath" value="${appInfo.logoPicPath}"/>
-            	<input type="hidden" id="logoLocPath" name="logoLocPath" value="${appInfo.logoLocPath}"/>
-				<div id="uploadfile" style="display: none">
-				<input id="attach"  type="file" class="form-control col-md-7 col-xs-12" name="attach">
+				<div id="uploadfile">
+				<input id="attach"  type="file" class="form-control col-md-7 col-xs-12" name="attach" onchange="selectImage(this)">
 				<p><span style="color:red;font-weight: bold;">*注：1、大小不得超过500k.2、图片格式：jpg、png、jpeg、pneg</span></p>
 				</div>
-				<div id="logoFile"></div>
+				<div id="logoFile">
+				<p><img id="appImg" src="${appInfo.logoPicPath }" width="100px"/></p>
+				</div>
 				${fileUploadError }
             </div>
           </div>
@@ -160,3 +160,4 @@
 </div>
 <%@include file="common/footer.jsp"%>
 <script src="${pageContext.request.contextPath }/statics/localjs/appinfomodify.js"></script>
+<script src="${pageContext.request.contextPath }/statics/localjs/appcategory.js"></script>

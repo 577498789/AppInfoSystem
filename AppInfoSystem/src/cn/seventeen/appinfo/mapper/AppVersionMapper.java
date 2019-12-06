@@ -12,7 +12,7 @@ public interface AppVersionMapper {
 	//查询指定id的版本
 	AppVersion findAppVersionsById(Integer id);
 	//新增app版本
-	Integer addAppVersion(@Param("ver")AppVersion appVersion,@Param("id")Integer id);
+	Integer addAppVersion(AppVersion appVersion);
 	//修改app版本信息
 	Integer modifyAppVersion(AppVersion appVersion);
 	//删除指定app的所有版本信息

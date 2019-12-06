@@ -22,8 +22,8 @@ public class AppVersionServiceImpl implements AppVersionService {
 	}
 
 	@Override
-	public boolean addAppVersion(AppVersion appVersion,Integer id) {
-		return mapper.addAppVersion(appVersion,id)>0;
+	public boolean addAppVersion(AppVersion appVersion) {
+		return mapper.addAppVersion(appVersion)>0;
 	}
 
 	@Override

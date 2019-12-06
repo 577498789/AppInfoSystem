@@ -179,6 +179,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="softwareSize !=null">
 			, `softwareSize`=#{softwareSize}
 		</if>
+		<if test="status !=null">
+			, `status`=#{status}
+		</if>
 		<if test="downloads !=null">
 			, `downloads`=#{downloads}
 		</if>
@@ -202,6 +205,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</if>
 		<if test="logoPicPath !=null and logoPicPath !=''">
 			, `logoPicPath`=#{logoPicPath}
+		</if>
+		<if test="versionId !=null ">
+			, `versionId`=#{versionId}
 		</if>
 		
 		WHERE id = #{id}
